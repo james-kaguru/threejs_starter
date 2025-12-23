@@ -1,9 +1,12 @@
 import { createWindowGPU, mainloop } from "@gfx/dwm/ext/webgpu";
 import { DenoCanvas } from "./canvas.ts";
 import { createLoggingProxy } from "./logging-proxy.ts";
-import WebGPURenderer from "../../src/renderers/webgpu/WebGPURenderer.js";
+import type { WebGPURenderer as WebGPURenderer_Type } from "three/webgpu";
+import WebGPURenderer_Value from "../../src/renderers/webgpu/WebGPURenderer.js";
+const WebGPURenderer = WebGPURenderer_Value as unknown as typeof WebGPURenderer_Type;
+// @ts-types="npm:@types/three"
 import * as THREE from "../../src/Three.js";
-import { OrbitControls } from "three/examples/jsm/Addons.js";
+import { OrbitControls } from "three/addons";
 
 (async () => {
 	try {
@@ -16,7 +19,8 @@ import { OrbitControls } from "three/examples/jsm/Addons.js";
 
 		const context = window.getContext("webgpu");
 
-		window.device.lost = {
+		// deno-lint-ignore no-explicit-any
+		(window.device as any).lost = {
 			then: () => {},
 		};
 

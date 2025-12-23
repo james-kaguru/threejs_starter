@@ -1,6 +1,6 @@
 import { createWindowGPU, mainloop } from "@gfx/dwm/ext/webgpu";
 import { DenoCanvas } from "./src/canvas.ts";
-import { WebGPURenderer } from "../build/three.webgpu.js";
+import { WebGPURenderer } from "three/webgpu";
 import {
 	Scene,
 	AmbientLight,
@@ -10,8 +10,11 @@ import {
 	MeshPhongMaterial,
 	PointLight,
 	Color,
-} from "../build/three.core.js";
-import { OrbitControls } from "three/examples/jsm/Addons.js";
+} from "three";
+import { OrbitControls } from "three/addons";
+
+// deno-lint-ignore no-explicit-any
+(globalThis as any).VideoFrame = class DummyVideoFrame {};
 
 (async () => {
 	try {
@@ -24,7 +27,8 @@ import { OrbitControls } from "three/examples/jsm/Addons.js";
 
 		const context = window.getContext("webgpu");
 
-		window.device.lost = {
+		// deno-lint-ignore no-explicit-any
+		(window.device as any).lost = {
 			then: () => {},
 		};
 
@@ -32,7 +36,7 @@ import { OrbitControls } from "three/examples/jsm/Addons.js";
 		const canvas = new DenoCanvas(window);
 
 		const renderer = new WebGPURenderer({
-			canvas,
+			canvas: canvas as unknown as HTMLCanvasElement,
 			antialias: true,
 			forceWebGL: false,
 			device: window.device,

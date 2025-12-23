@@ -1,3 +1,4 @@
+// deno-lint-ignore-file no-explicit-any
 import type { WindowGPU } from "@gfx/dwm/ext/webgpu";
 
 const defaultStyle: any = {
@@ -9,19 +10,19 @@ const defaultStyle: any = {
 export class DenoCanvas {
 	"data-enigine" = "three.js r182dev webgpu";
 
-	_width: string;
-	_height: string;
+	_width: number;
+	_height: number;
 	_windowGPU: WindowGPU;
 	_style = defaultStyle;
 
 	constructor(window: WindowGPU) {
 		this._windowGPU = window;
 
-		this.width = window.window.size.width.toString();
-		this.height = window.window.size.height.toString();
+		this._width = window.window.size.width;
+		this._height = window.window.size.height;
 	}
 
-	setAttribute(qualifiedName: string, value: string) {}
+	setAttribute(_qualifiedName: string, _value: string) {}
 
 	get clientWidth() {
 		return this._width;
@@ -35,7 +36,7 @@ export class DenoCanvas {
 		return this._width;
 	}
 
-	set width(width: string) {
+	set width(width: number) {
 		this._width = width;
 	}
 
@@ -43,7 +44,7 @@ export class DenoCanvas {
 		return this._height;
 	}
 
-	set height(height: string) {
+	set height(height: number) {
 		this._height = height;
 	}
 
@@ -56,16 +57,16 @@ export class DenoCanvas {
 		this._style = str;
 	}
 
-	removeEventListener(...args: any) {
-		removeEventListener(...args);
+	removeEventListener(...args: any[]) {
+		(removeEventListener as any)(...args);
 	}
 
 	getRootNode() {
 		return this;
 	}
 
-	addEventListener(...args: any) {
-		addEventListener(...args);
+	addEventListener(...args: any[]) {
+		(addEventListener as any)(...args);
 	}
 
 	setPointerCapture() {}

@@ -1,5 +1,0 @@
-{
-  "compilerOptions": {
-    "types": ["@webgpu/types"]
-  }
-}

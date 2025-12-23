@@ -25,9 +25,8 @@
     "jsr:@std/path@^1.0.6": "1.1.3",
     "jsr:@std/path@^1.1.3": "1.1.3",
     "jsr:@webview/webview@0.9": "0.9.0",
+    "npm:@types/three@*": "0.181.0",
     "npm:@types/three@0.181": "0.181.0",
-    "npm:@webgpu/types@~0.1.66": "0.1.66",
-    "npm:nano-jsx@~0.2.1": "0.2.1",
     "npm:three@~0.181.2": "0.181.2"
   },
   "jsr": {
@@ -174,9 +173,6 @@
     "meshoptimizer@0.22.0": {
       "integrity": "sha512-IebiK79sqIy+E4EgOr+CAw+Ke8hAspXKzBd0JdgEmPHiAwmvEj2S4h1rfvo+o/BnfEYd/jAOg5IeeIjzlzSnDg=="
     },
-    "nano-jsx@0.2.1": {
-      "integrity": "sha512-0zTNveaQn6aUCk01bLmywK1209zaxg+1gCTqm33VH05kWxmkng9GAdmzDky2Oy6wZ4GstaEa7PqH8Ll2Ygfbkw=="
-    },
     "three@0.181.2": {
       "integrity": "sha512-k/CjiZ80bYss6Qs7/ex1TBlPD11whT9oKfT8oTGiHa34W4JRd1NiH/Tr1DbHWQ2/vMUypxksLnF2CfmlmM5XFQ=="
     }
@@ -191,8 +187,6 @@
       "jsr:@std/path@^1.1.3",
       "jsr:@webview/webview@0.9",
       "npm:@types/three@0.181",
-      "npm:@webgpu/types@~0.1.66",
-      "npm:nano-jsx@~0.2.1",
       "npm:three@~0.181.2"
     ]
   }

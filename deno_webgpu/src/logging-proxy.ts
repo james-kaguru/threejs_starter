@@ -1,11 +1,12 @@
-export function createLoggingProxy(target, name = "Object") {
+// deno-lint-ignore-file no-explicit-any
+export function createLoggingProxy(target: any, name = "Object") {
 	return new Proxy(target, {
-		get(target, property, receiver) {
+		get(target, property, _receiver) {
 			const value = target[property];
 
 			// If it's a function, wrap it to log when it's called
 			if (typeof value === "function") {
-				return function (...args) {
+				return function (...args: any[]) {
 					console.log(`[${name}] Method called: ${String(property)}`, args);
 					const result = value.apply(target, args);
 					return result;
